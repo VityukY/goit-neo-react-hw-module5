@@ -1,46 +1,26 @@
-import {useState, useEffect} from 'react'
-import searchMovieApi from '../../apis/search-movie-api'
-import MovieList from '../MovieList/MovieList';
+import toast, { Toaster } from "react-hot-toast";
+import styles from './SearchBox.module.css'
 
-
-export default function SearchBox() {
-   const [query, updateQuery] = useState('')
-   const [movieList, setMovieList] = useState([]);
-
-   const addMovies = (newMovies) => {
-      setMovieList(() => {
-      return [...newMovies];
-    });
-  }; 
-   useEffect(() => {
-      if (query == '') {
-        return
-     }
-    const fetchMovies = async () => {
-      try {
-        const data = await searchMovieApi(query);  // Fetch movie data
-        addMovies(data || []);
-      } catch (error) {
-        console.error('Error fetching movies:', error); // Handle any errors
-        setMovieList([]);  // Ensure movieList is set to an empty array in case of error
-      }
-    };
-
-    fetchMovies();  // Call the async function to fetch movies
-  }, [query]);  // Empty dependency array ensures this runs only once on mount
-
+export default function SearchBox({updateQuery}) {
    
    async function searchMovie(e) {
       e.preventDefault()
-      updateQuery(e.target.query.value)
+      if(e.target.query.value == '') {
+         toast.error('Empty query is not allowed');
+         
+         return
+      }
+      updateQuery(e.target.query.value);
+      e.target.query.value = '';      
    }
    return (
       <>
-         <form onSubmit={searchMovie}>
-            <input type="text" name="query" placeholder="Search..." />
-            <button type="submit">Search</button>
+         <Toaster />
+         <form className={styles.form} onSubmit={searchMovie}>
+            <input className={styles.inputField} type="text" name="query" placeholder="Search..."/>
+            <button className={styles.button} type="submit">Search</button>
          </form>
-         {movieList.length > 0 && <MovieList movieList={movieList} />}
+         
 
       </>
    );

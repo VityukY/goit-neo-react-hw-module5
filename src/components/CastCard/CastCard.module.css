@@ -1,0 +1,12 @@
+.actorName {
+   font-weight: bold;
+   margin: 0.5rem 0;
+ }
+ 
+ .actorPhoto {
+   border-radius: 50%;
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+ }
+ 

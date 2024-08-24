@@ -1,0 +1,23 @@
+
+/* Reviews Section */
+.reviewsTitle {
+   font-size: 1.5rem;
+   margin: 20px 0;
+   color: #333;
+ }
+ 
+ .reviewsList {
+   list-style-type: none;
+   padding: 0;
+   width: 800px;
+ }
+ 
+ .reviewsListItem {
+   padding: 15px;
+   border-bottom: 1px solid #ddd;
+ }
+
+ 
+ .reviewText:last-child {
+   margin-bottom: 0;
+ }

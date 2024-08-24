@@ -6,19 +6,19 @@ const baseUrl = 'https://api.themoviedb.org/3/movie/';
 async function movieDetails(movieId) {
   const options = {
     method: 'GET',
-    url: `${baseUrl}550?api_key=${apiKey}&movie-id=${movieId}`,
+    url: `${baseUrl}${movieId}?api_key=${apiKey}&include_adult=false`,
     headers: {
       accept: 'application/json',
     },
   };
 
-  // 'async' is correctly placed here
+
   try {
-    const response = await axios.request(options); // Await the API call
-    return response.data; // Return the data
+    const response = await axios.request(options); 
+    return response.data;
   } catch (error) {
-    console.error('Error fetching trending movies:', error); // Handle errors
-    throw error; // Re-throw the error for further handling if necessary
+    console.error('Error fetching trending movies:', error); 
+    throw error; 
   }
 }
 

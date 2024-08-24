@@ -1,0 +1,33 @@
+
+ /* Cast section title */
+ h2 {
+   text-align: center;
+   font-size: 1.5rem;
+   margin: 1rem 0;
+   color: #333;
+ }
+ 
+ /* Cast list styles */
+ .castList {
+   margin: auto 0;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   list-style: none;
+   gap: 5px;
+   padding: 0;
+   margin: 0;
+   width: 800px;
+   margin: 0 auto;
+ }
+ 
+ .castCard {
+   background: #fff;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   margin: 0.5rem;
+   padding: 0.5rem;
+   width: 150px;
+   text-align: center;
+ }
+ 

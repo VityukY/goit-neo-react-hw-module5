@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import trendsMovie from '../../apis/trending-movies-api.js';
 import MovieList from '../../components/MovieList/MovieList.jsx';
+import {Discuss} from 'react-loader-spinner'
 
 export default function HomePage() {
+  const [isLoading, updateLoading] = useState(false)
   const [movieList, setMovieList] = useState([]);
    const addMovies = (newMovies) => {
       setMovieList(() => {
@@ -12,11 +14,14 @@ export default function HomePage() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        updateLoading(true)
         const data = await trendsMovie();  // Fetch movie data
         addMovies(data || []);
       } catch (error) {
         console.error('Error fetching movies:', error); // Handle any errors
         setMovieList([]);  // Ensure movieList is set to an empty array in case of error
+      }finally {
+        updateLoading(false)
       }
     };
 
@@ -25,7 +30,7 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>Home Page</h1>
+      {isLoading&& <Discuss/>}
       {movieList.length > 0 && <MovieList movieList={movieList} />}
     </>
   );
