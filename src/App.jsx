@@ -5,12 +5,12 @@ import './App.css'
 import {lazy,  Suspense } from 'react'
 
 function App() {
-  const HomePage = lazy(()=> import('./page/HomePage/HomePage'))
-  const MoviesPage = lazy(() => import('./page/MoviesPage/MoviePage'))
-  const MovieDetailsPage = lazy(() => import('./page/MovieDetailsPage/MovieDetailsPage'))
+  const HomePage = lazy(()=> import('./pages/HomePage/HomePage'))
+  const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviePage'))
+  const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage/MovieDetailsPage'))
   const MovieCast = lazy(() => import('./components/MovieCast/MovieCast'))
   const MovieReviews = lazy(() => import('./components/MovieReviews/MovieReviews'))
-  const NotFound = lazy(() => import('./page/NotFoundPage/NotFoundPage'))
+  const NotFound = lazy(() => import('./pages/NotFoundPage/NotFoundPage'))
   
   return (
     <>
